@@ -3,437 +3,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roadstead — Outdoor Signage, NYC</title>
+<title>Roadstead — Outdoor Signage, New York City</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#e8e3d2;
-    --paper-2:#dcd5bd;
-    --ink:#17130f;
-    --orange:#f04e23;
-    --cobalt:#1e48c8;
-    --yellow:#f6c324;
-    --forest:#1f3d2b;
+    --black:#14120f;
+    --black-2:#1c1a16;
+    --ivory:#f3efe6;
+    --ivory-dim:#c9c2b3;
+    --stone:#8f887a;
+    --line:rgba(243,239,230,0.16);
+    --wine:#5c2027;
+    --wine-bright:#7a2c34;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    line-height:1.55;
+    background:var(--black);
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.65;
     font-size:17px;
   }
   h1,h2,h3{
-    font-family:'Anton', sans-serif;
+    font-family:'Cormorant Garamond', serif;
     font-weight:400;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
     margin:0;
-    line-height:0.92;
+    line-height:1.05;
+    letter-spacing:0.005em;
   }
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  img,svg{max-width:100%; display:block;}
-  .wrap{max-width:1220px; margin:0 auto; padding:0 28px;}
+  img{max-width:100%; display:block;}
+  .ph{filter:grayscale(1) contrast(1.08) brightness(0.82); object-fit:cover;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 40px;}
   a{color:inherit;}
-
-  /* halftone texture, reused */
-  .halftone{
-    background-image:radial-gradient(circle, rgba(23,19,15,0.5) 1.1px, transparent 1.2px);
-    background-size:9px 9px;
-  }
-  .halftone-inv{
-    background-image:radial-gradient(circle, rgba(232,227,210,0.35) 1.1px, transparent 1.2px);
-    background-size:9px 9px;
+  .label{
+    font-family:'Jost',sans-serif; font-size:0.74rem; font-weight:500;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--stone);
   }
 
   /* ---------- topbar ---------- */
   .topbar{
     position:sticky; top:0; z-index:50;
-    background:var(--forest);
-    color:var(--paper);
-    border-bottom:3px solid var(--ink);
+    background:rgba(20,18,15,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
   }
-  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:78px;}
   .brand{
-    display:flex; align-items:center; gap:10px;
-    text-decoration:none; color:var(--paper);
+    text-decoration:none; color:var(--ivory);
+    font-family:'Cormorant Garamond',serif; font-size:1.5rem; letter-spacing:0.06em;
   }
-  .brand .stamp{
-    width:34px; height:34px;
-    background:var(--orange);
-    border:2px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-    transform:rotate(-6deg);
-    font-family:'Anton',sans-serif; color:var(--ink); font-size:1rem;
-  }
-  .brand .word{font-family:'Anton',sans-serif; font-size:1.15rem; letter-spacing:0.02em; text-transform:uppercase;}
-  nav{display:flex; gap:26px;}
+  nav{display:flex; gap:38px;}
   nav a{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.8rem; letter-spacing:0.02em;
-    text-decoration:none; color:var(--paper-2); text-transform:uppercase;
+    font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
+    text-decoration:none; color:var(--ivory-dim); font-weight:400;
   }
-  nav a:hover{color:var(--yellow);}
+  nav a:hover{color:var(--ivory);}
   .topbar .cta{
-    background:var(--orange); color:var(--ink);
-    padding:9px 16px; border:2px solid var(--ink);
-    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.02em; text-decoration:none;
+    border:1px solid var(--ivory-dim); color:var(--ivory);
+    padding:11px 22px;
+    font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase;
+    text-decoration:none;
   }
-  .topbar .cta:hover{background:var(--yellow);}
-  @media (max-width:820px){ nav{display:none;} }
-
-  /* ---------- ticker ---------- */
-  .ticker{
-    background:var(--ink); color:var(--paper);
-    overflow:hidden; white-space:nowrap;
-    border-bottom:3px solid var(--orange);
-  }
-  .ticker-track{
-    display:inline-block;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.82rem; letter-spacing:0.03em;
-    padding:9px 0;
-    animation:scroll 26s linear infinite;
-  }
-  .ticker-track span{padding:0 26px; text-transform:uppercase;}
-  .ticker-track span.hl{color:var(--yellow);}
-  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-  @media (prefers-reduced-motion: reduce){ .ticker-track{animation:none;} }
+  .topbar .cta:hover{background:var(--ivory); color:var(--black);}
+  @media (max-width:860px){ nav{display:none;} }
 
   /* ---------- hero ---------- */
   .hero{
     position:relative;
-    background:
-      linear-gradient(180deg, rgba(23,19,15,0.15) 0%, rgba(23,19,15,0.55) 60%, rgba(23,19,15,0.88) 100%),
-      url('https://images.unsplash.com/photo-1664946232344-dada3146e9d0?w=2200&q=80&auto=format&fit=crop') center 62%/cover no-repeat;
-    color:var(--paper);
-    overflow:hidden;
-    padding:70px 0 0;
-    min-height:92vh;
+    min-height:96vh;
     display:flex;
     align-items:flex-end;
   }
-  .hero::before{
+  .hero img{
+    position:absolute; inset:0; width:100%; height:100%; z-index:0;
+  }
+  .hero::after{
     content:"";
     position:absolute; inset:0;
-    background-image:radial-gradient(circle, rgba(23,19,15,0.22) 1.2px, transparent 1.3px);
-    background-size:10px 10px;
-    pointer-events:none;
+    background:linear-gradient(180deg, rgba(20,18,15,0.15) 0%, rgba(20,18,15,0.55) 55%, rgba(20,18,15,0.95) 100%);
+    z-index:1;
   }
-  .hero-grid{
-    position:relative;
-    display:grid;
-    grid-template-columns:1fr;
-    gap:0;
-    padding-bottom:64px;
-    width:100%;
-  }
+  .hero-inner{position:relative; z-index:2; padding:0 0 90px; width:100%;}
+  .hero .label{color:var(--ivory-dim); margin-bottom:20px; display:block;}
   .hero h1{
-    font-size:clamp(3rem, 7vw, 6.4rem);
-    color:var(--paper);
+    font-size:clamp(3rem, 7vw, 6.2rem);
+    max-width:16ch;
+    font-weight:400;
   }
-  .hero h1 .accent{color:var(--orange); -webkit-text-stroke:2px var(--ink); text-stroke:2px var(--ink);}
   .hero .sub{
-    margin-top:26px;
-    font-size:1.08rem;
-    max-width:46ch;
-    color:var(--paper-2);
+    margin-top:28px; font-size:1.12rem; max-width:46ch; color:var(--ivory-dim); font-weight:300;
   }
-  .hero-actions{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-actions{margin-top:38px; display:flex; gap:18px; flex-wrap:wrap;}
   .btn{
-    display:inline-block;
-    padding:14px 24px;
-    font-family:'IBM Plex Mono',monospace;
-    text-transform:uppercase;
-    font-size:0.82rem; font-weight:600; letter-spacing:0.02em;
-    text-decoration:none;
-    border:2px solid var(--ink);
+    display:inline-block; padding:15px 28px;
+    font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase;
+    text-decoration:none; border:1px solid var(--ivory-dim);
   }
-  .btn.primary{background:var(--orange); color:var(--ink);}
-  .btn.primary:hover{background:var(--yellow);}
-  .btn.ghost{background:transparent; color:var(--paper); border-color:var(--paper-2);}
-  .btn.ghost:hover{border-color:var(--yellow); color:var(--yellow);}
-
-  .hero-art{position:relative; height:440px;}
-  .hero-art svg{position:absolute; inset:0; width:100%; height:100%;}
-  .sticker{
-    position:absolute;
-    background:var(--paper);
-    color:var(--ink);
-    border:2.5px solid var(--ink);
-    padding:10px 14px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.02em;
-    box-shadow:5px 5px 0 var(--ink);
-  }
-  .sticker.s1{top:6px; right:10%; transform:rotate(-7deg); background:var(--yellow);}
-  .sticker.s2{bottom:20px; left:0; transform:rotate(5deg); background:var(--paper);}
-  .sticker.s3{top:44%; right:-6px; transform:rotate(10deg); background:var(--cobalt); color:var(--paper);}
-  @media (max-width:920px){
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-art{height:300px; margin-top:10px;}
-  }
+  .btn.primary{background:var(--ivory); color:var(--black); border-color:var(--ivory);}
+  .btn.primary:hover{background:transparent; color:var(--ivory);}
+  .btn.ghost{color:var(--ivory); border-color:rgba(243,239,230,0.4);}
+  .btn.ghost:hover{border-color:var(--ivory);}
 
   /* ---------- section shared ---------- */
-  section{padding:100px 0;}
-  .section-head{max-width:680px; margin-bottom:52px;}
-  .section-head .stamp-tag{
-    display:inline-block;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.76rem; font-weight:600; letter-spacing:0.03em;
-    text-transform:uppercase;
-    background:var(--orange); color:var(--ink);
-    border:2px solid var(--ink);
-    padding:5px 10px;
-    transform:rotate(-2deg);
-    margin-bottom:18px;
-  }
-  .section-head h2{font-size:clamp(2.1rem, 4.4vw, 3.2rem);}
-  .section-head p{margin-top:16px; font-size:1.05rem; color:#3a362c; max-width:58ch;}
+  section{padding:130px 0;}
+  .section-head{max-width:680px; margin-bottom:70px;}
+  .section-head .label{margin-bottom:18px; display:block;}
+  .section-head h2{font-size:clamp(2.2rem, 4.2vw, 3.4rem); font-weight:400;}
+  .section-head p{margin-top:20px; font-size:1.08rem; color:var(--ivory-dim); max-width:58ch; font-weight:300;}
+  .rule{border:none; border-top:1px solid var(--line); margin:0;}
 
-  /* ---------- law strip ---------- */
-  .law{background:var(--cobalt); color:var(--paper); border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);}
-  .law .wrap{padding:24px 28px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;}
-  .law .badge{
-    flex:none;
-    font-family:'Anton',sans-serif; font-size:1.2rem;
-    background:var(--paper); color:var(--cobalt);
-    border:2px solid var(--ink);
-    padding:8px 14px; transform:rotate(-3deg);
-  }
-  .law p{margin:0; font-size:1.02rem; max-width:74ch;}
+  /* ---------- law statement ---------- */
+  .law{padding:80px 0; border-bottom:1px solid var(--line);}
+  .law .wrap{display:grid; grid-template-columns:220px 1fr; gap:40px; align-items:start;}
+  .law .label{margin:0;}
+  .law p{margin:0; font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:400; line-height:1.4; max-width:34ch; color:var(--ivory);}
+  @media (max-width:760px){ .law .wrap{grid-template-columns:1fr;} }
 
-  /* ---------- product grid: sticker cards ---------- */
-  .products{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  /* ---------- full bleed break ---------- */
+  .break{position:relative; height:76vh; overflow:hidden;}
+  .break img{width:100%; height:100%; object-fit:cover;}
+  .break .caption{
+    position:absolute; left:40px; bottom:28px; z-index:2;
   }
-  .product{
-    background:var(--paper);
-    border:2.5px solid var(--ink);
-    padding:26px 24px 24px;
-    position:relative;
-    box-shadow:6px 6px 0 var(--ink);
-  }
-  .product:nth-child(3n+1){transform:rotate(-0.6deg);}
-  .product:nth-child(3n+2){transform:rotate(0.5deg);}
-  .product:nth-child(3n+3){transform:rotate(-0.3deg);}
-  .product .num{
-    position:absolute; top:-14px; left:-14px;
-    width:36px; height:36px; border-radius:50%;
-    background:var(--yellow); border:2px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; font-weight:700;
-  }
-  .product h3{font-size:1.32rem; margin-top:6px;}
-  .product p{margin-top:12px; font-size:0.96rem; color:#3a362c;}
-  @media (max-width:900px){ .products{grid-template-columns:1fr 1fr;} }
-  @media (max-width:600px){ .products{grid-template-columns:1fr;} }
+  .break::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,18,15,0.75), transparent 40%);}
 
-  /* ---------- gallery: taped collage ---------- */
-  .gallery{background:var(--ink); color:var(--paper);}
-  .gallery .section-head p{color:var(--paper-2);}
-  .collage{
-    display:grid; grid-template-columns:1.3fr 1fr 1fr; grid-template-rows:300px 300px;
-    gap:18px;
-    padding-top:10px;
+  /* ---------- product list (editorial) ---------- */
+  .plist{border-top:1px solid var(--line);}
+  .prow{
+    display:grid; grid-template-columns:90px 1fr 1.4fr;
+    gap:40px; align-items:start;
+    padding:44px 0;
+    border-bottom:1px solid var(--line);
   }
-  .snap{position:relative; overflow:hidden; background:#0a0906;}
-  .snap.g1{grid-row:1 / 3;}
-  .snap img{width:100%; height:100%; object-fit:cover; display:block;}
-  .snap figcaption{
-    position:absolute; left:0; right:0; bottom:0;
-    margin:0; padding:16px 18px;
-    font-family:'IBM Plex Mono',monospace; font-size:0.76rem;
-    color:var(--paper); text-transform:uppercase; letter-spacing:0.02em;
-    background:linear-gradient(0deg, rgba(0,0,0,0.72), transparent);
-  }
-  @media (max-width:900px){
-    .collage{grid-template-columns:1fr 1fr; grid-template-rows:240px 240px 240px;}
-    .snap.g1{grid-row:1 / 2; grid-column:1 / 3;}
-  }
-  @media (max-width:560px){ .collage{grid-template-columns:1fr; grid-template-rows:none;} .snap{height:260px;} .snap.g1{grid-column:1;} }
-
-  /* ---------- winter split ---------- */
-  .winter{display:grid; grid-template-columns:1fr 1fr; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);}
-  .winter .copy{padding:90px 56px; display:flex; flex-direction:column; justify-content:center;}
-  .winter .copy h2{font-size:clamp(2rem,3.6vw,2.7rem);}
-  .winter .copy p{margin-top:18px; font-size:1.02rem; color:#3a362c; max-width:48ch;}
-  .stat-row{display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;}
-  .stat{
-    border:2px dashed var(--ink); border-radius:50%;
-    width:120px; height:120px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:8px;
-  }
-  .stat .n{font-family:'Anton',sans-serif; font-size:1.5rem; color:var(--orange);}
-  .stat .l{font-family:'IBM Plex Mono',monospace; font-size:0.62rem; text-transform:uppercase; margin-top:4px; line-height:1.3;}
-  .winter .photo{position:relative; background:var(--paper-2); overflow:hidden;}
-  .winter .photo svg{position:absolute; inset:0; width:100%; height:100%;}
-  @media (max-width:900px){
-    .winter{grid-template-columns:1fr;}
-    .winter .copy{padding:64px 30px;}
-    .winter .photo{min-height:340px;}
+  .prow .n{font-family:'Cormorant Garamond',serif; font-size:2.1rem; color:var(--stone); font-weight:400;}
+  .prow h3{font-size:1.7rem; font-weight:400;}
+  .prow p{margin:0; color:var(--ivory-dim); font-size:0.98rem; font-weight:300; max-width:54ch;}
+  @media (max-width:760px){
+    .prow{grid-template-columns:56px 1fr; }
+    .prow p{grid-column:1 / 3;}
   }
 
-  /* ---------- process: subway line ---------- */
-  .process-line{position:relative; padding-top:20px;}
-  .process-line::before{
-    content:""; position:absolute; left:0; right:0; top:44px;
-    height:4px; background:var(--ink);
+  /* ---------- gallery: editorial asymmetric grid ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:2px;
   }
-  .process ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; position:relative;}
-  .process li{display:flex; flex-direction:column; align-items:flex-start;}
-  .process .dot{
-    width:48px; height:48px; border-radius:50%;
-    background:var(--orange); border:3px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Anton',sans-serif; font-size:1.1rem;
-    position:relative; z-index:1;
+  .gallery-grid .col{display:grid; gap:2px;}
+  .gpiece{position:relative; overflow:hidden;}
+  .gpiece img{width:100%; height:100%; object-fit:cover; display:block;}
+  .gcap{margin-top:14px;}
+  .gcap .label{margin:0;}
+  @media (max-width:820px){ .gallery-grid{grid-template-columns:1fr;} }
+
+  /* ---------- winter ---------- */
+  .winter{position:relative; min-height:92vh; display:flex; align-items:flex-end;}
+  .winter img{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
+  .winter::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,18,15,0.92) 0%, rgba(20,18,15,0.55) 46%, rgba(20,18,15,0.15) 78%); z-index:1;}
+  .winter-inner{position:relative; z-index:2; padding-bottom:90px; max-width:620px;}
+  .winter-inner h2{font-size:clamp(2.2rem, 4vw, 3.2rem);}
+  .winter-inner p{margin-top:20px; color:var(--ivory-dim); font-size:1.05rem; max-width:50ch;}
+  .stat-row{display:flex; gap:56px; margin-top:44px; flex-wrap:wrap;}
+  .stat .n{font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:400;}
+  .stat .l{margin-top:6px;}
+  .stat{border-top:1px solid var(--line); padding-top:16px; min-width:120px;}
+
+  /* ---------- process ---------- */
+  .process{border-top:1px solid var(--line);}
+  .prow2{
+    display:grid; grid-template-columns:90px 1fr; gap:40px;
+    padding:40px 0; border-bottom:1px solid var(--line); align-items:baseline;
   }
-  .process li:nth-child(2) .dot{background:var(--yellow);}
-  .process li:nth-child(3) .dot{background:var(--cobalt); color:var(--paper);}
-  .process li:nth-child(4) .dot{background:var(--paper); }
-  .process h3{margin-top:16px; font-size:1.05rem; font-family:'Anton',sans-serif; text-transform:uppercase;}
-  .process p{margin-top:8px; font-size:0.94rem; color:#3a362c;}
-  @media (max-width:820px){
-    .process ol{grid-template-columns:1fr 1fr;}
-    .process-line::before{display:none;}
-  }
-  @media (max-width:560px){ .process ol{grid-template-columns:1fr;} }
+  .prow2 .n{font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:var(--stone);}
+  .prow2 h3{font-size:1.35rem; font-weight:400; display:inline; margin-right:18px;}
+  .prow2 p{display:inline; color:var(--ivory-dim); font-size:0.98rem; font-weight:300;}
+  @media (max-width:700px){ .prow2{grid-template-columns:1fr;} .prow2 h3{display:block; margin-bottom:8px;} }
 
   /* ---------- close cta ---------- */
-  .close-cta{background:var(--orange); color:var(--ink); padding:100px 0; position:relative; overflow:hidden;}
-  .close-cta::before{
-    content:""; position:absolute; inset:0;
-    background-image:radial-gradient(circle, rgba(23,19,15,0.16) 1.2px, transparent 1.3px);
-    background-size:10px 10px;
-  }
-  .close-cta .wrap{position:relative; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;}
-  .close-cta h2{font-size:clamp(2.2rem, 4.8vw, 3.6rem); max-width:13ch;}
-  .close-cta .side{max-width:36ch;}
-  .close-cta .side p{font-size:1rem;}
-  .close-cta .btn.primary{background:var(--ink); color:var(--paper); margin-top:20px;}
-  .close-cta .btn.primary:hover{background:var(--forest);}
+  .close-cta{position:relative; min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center;}
+  .close-cta img{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
+  .close-cta::after{content:""; position:absolute; inset:0; background:rgba(20,18,15,0.72); z-index:1;}
+  .close-cta .inner{position:relative; z-index:2; max-width:640px; padding:0 40px;}
+  .close-cta h2{font-size:clamp(2.4rem, 5vw, 3.8rem);}
+  .close-cta p{margin-top:22px; color:var(--ivory-dim); font-size:1.08rem;}
+  .close-cta .btn{margin-top:36px;}
 
-  footer{background:var(--ink); color:var(--paper-2); padding:30px 0; font-family:'IBM Plex Mono',monospace; font-size:0.78rem;}
-  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; text-transform:uppercase; letter-spacing:0.02em;}
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  footer .label{margin:0;}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="wrap">
-    <a href="#" class="brand"><span class="stamp">R</span><span class="word">Roadstead</span></a>
+    <a href="#" class="brand">Roadstead</a>
     <nav>
       <a href="#products">Signage</a>
       <a href="#winter">Winter-Ready</a>
       <a href="#gallery">Work</a>
       <a href="#process">Process</a>
     </nav>
-    <a href="#contact" class="cta">Get a Quote</a>
-  </div>
-</div>
-
-<div class="ticker">
-  <div class="ticker-track">
-    <span><span class="hl">LOCAL LAW 158</span> — ROADWAY DINING IS NOW YEAR-ROUND</span>
-    <span>MENU BOARDS · BRANDED PANELS · DIRECTIONALS</span>
-    <span>WINTER-RATED SIGNAGE, ALL FIVE BOROUGHS</span>
-    <span><span class="hl">LOCAL LAW 158</span> — ROADWAY DINING IS NOW YEAR-ROUND</span>
-    <span>MENU BOARDS · BRANDED PANELS · DIRECTIONALS</span>
-    <span>WINTER-RATED SIGNAGE, ALL FIVE BOROUGHS</span>
+    <a href="#contact" class="cta">Enquire</a>
   </div>
 </div>
 
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div style="max-width:640px; position:relative;">
-      <div class="sticker s1" style="position:static; display:inline-block; transform:rotate(-4deg); margin-bottom:18px;">Local Law 158 &middot; Now In Effect</div>
-      <h1>Signage that stays<br>out <span class="accent">all winter.</span></h1>
-      <p class="sub">Your roadside seating isn't seasonal anymore — the city made sure of that. We design and fabricate menu boards, branded panels, and directionals rated for salt, wind, and freeze, so your café keeps its street presence past Labor Day and straight through January.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn primary">Start a Signage Plan</a>
-        <a href="#products" class="btn ghost">See What We Build</a>
-      </div>
+  <img class="ph" src="https://picsum.photos/seed/roadstead-hero/2200/1500?grayscale" alt="Placeholder — roadside café hero image">
+  <div class="wrap hero-inner">
+    <span class="label">Local Law 158 — Roadway Dining, Now Year-Round</span>
+    <h1>Signage for the café that never comes down.</h1>
+    <p class="sub">We design and fabricate outdoor menu boards, branded panels, and directional signage for New York's finest roadside dining — built to hold their composure through a Manhattan winter.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn primary">Begin an Enquiry</a>
+      <a href="#products" class="btn ghost">View the Collection</a>
     </div>
   </div>
 </section>
 
 <div class="law">
   <div class="wrap">
-    <div class="badge">LL158</div>
-    <p>With roadway dining approved year-round, the sheds, railings, and stands that used to come down every November now stay up — which means their signage has to survive real winter weather, not just a summer patio.</p>
+    <span class="label">The Legislation</span>
+    <p>With roadway dining now permitted year-round, the structures that once came down each November remain — and their signage must be considered accordingly, not as a seasonal fixture but as a permanent part of the streetscape.</p>
   </div>
+</div>
+
+<div class="break">
+  <img class="ph" src="https://picsum.photos/seed/roadstead-break1/2000/1400?grayscale" alt="Placeholder — full-width streetscape image">
 </div>
 
 <section id="products">
   <div class="wrap">
     <div class="section-head">
-      <div class="stamp-tag">The Full Set</div>
-      <h2>Everything a roadside café needs to be found, read, and remembered.</h2>
-      <p>Each piece is fabricated to match your dining structure's footprint and your brand — not pulled from a catalog.</p>
+      <span class="label">The Collection</span>
+      <h2>Everything a roadside café requires to be found, read, and remembered.</h2>
+      <p>Each piece is fabricated to the proportions of your dining structure and the character of your brand.</p>
     </div>
-    <div class="products">
-      <div class="product"><div class="num">01</div><h3>Outdoor Menu Boards</h3><p>Weatherproof, backlit or matte-laminated boards sized for curbside sheds and parklets, swappable for seasonal menus.</p></div>
-      <div class="product"><div class="num">02</div><h3>Branded Panels</h3><p>Structural fascia and railing panels — your logo and colors built into the dining enclosure itself, not stuck on after.</p></div>
-      <div class="product"><div class="num">03</div><h3>Directional Signage</h3><p>Sidewalk-to-seating wayfinding: host stand markers, "enter here" flags, and curb-to-door arrows for narrow storefronts.</p></div>
-      <div class="product"><div class="num">04</div><h3>Winter-Rated Panels</h3><p>Freeze-cycle-tested aluminum and HDPE substrates that won't warp, fade, or crack under rock salt and plow spray.</p></div>
-      <div class="product"><div class="num">05</div><h3>Window & Door Decals</h3><p>Cut-vinyl hours, specials, and heater notices for storefront glass — removable without leaving adhesive scarring.</p></div>
-      <div class="product"><div class="num">06</div><h3>Sandwich Boards & A-Frames</h3><p>Ballasted A-frames rated for open avenues and wind tunnels between buildings, with quick-change chalk or magnetic inserts.</p></div>
-      <div class="product"><div class="num">07</div><h3>Awning Graphics</h3><p>Screen-printed or digitally imaged awning skins, refreshed on the same frame you already have permitted with the city.</p></div>
-      <div class="product"><div class="num">08</div><h3>Heater & Safety Signage</h3><p>Required clearance, propane, and fire-code postings, designed so compliance signage doesn't clash with your branding.</p></div>
-      <div class="product"><div class="num">09</div><h3>String Light & Canopy Branding</h3><p>Custom pennants, canopy valances, and lit signage that carry your identity after dark, when roadside dining draws its crowd.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery" class="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="stamp-tag" style="background:var(--yellow);">Around The City</div>
-      <h2>Roadside cafés, dressed for every season.</h2>
-      <p>A look at the streetscape we're designing for — the sheds, the sidewalks, the storefronts we build signage to match.</p>
-    </div>
-    <div class="collage">
-      <figure class="snap g1">
-        <img src="https://images.unsplash.com/photo-1634874495432-cb368c167e9b?w=1200&q=80&auto=format&fit=crop" alt="Outdoor dining tables at a New York City roadside café">
-        <figcaption>Roadway dining — curbside café seating</figcaption>
-      </figure>
-      <figure class="snap">
-        <img src="https://images.unsplash.com/photo-1542764489-9a714a1dc657?w=900&q=80&auto=format&fit=crop" alt="Illuminated café signage on a New York City storefront">
-        <figcaption>Lit café signage, storefront detail</figcaption>
-      </figure>
-      <figure class="snap">
-        <img src="https://images.unsplash.com/photo-1712324150924-578150db4ae7?w=900&q=80&auto=format&fit=crop" alt="New York City storefront with a branded sign">
-        <figcaption>Storefront café, brand panel install</figcaption>
-      </figure>
-      <figure class="snap">
-        <img src="https://images.unsplash.com/photo-1521515595231-336e8cade29b?w=1200&q=80&auto=format&fit=crop" alt="Storefronts on a New York City street during snowfall">
-        <figcaption>Winter storefronts, signage still standing</figcaption>
-      </figure>
+    <div class="plist">
+      <div class="prow"><div class="n">01</div><h3>Outdoor Menu Boards</h3><p>Weatherproofed, backlit or matte-laminated boards, sized precisely to curbside sheds and parklets.</p></div>
+      <div class="prow"><div class="n">02</div><h3>Branded Panels</h3><p>Structural fascia and railing panels, your identity considered as part of the enclosure itself.</p></div>
+      <div class="prow"><div class="n">03</div><h3>Directional Signage</h3><p>Sidewalk-to-seating wayfinding — host stand markers and quiet arrows for narrow storefronts.</p></div>
+      <div class="prow"><div class="n">04</div><h3>Winter-Rated Panels</h3><p>Freeze-cycle-tested aluminum and HDPE substrates, resistant to salt, warping, and fade.</p></div>
+      <div class="prow"><div class="n">05</div><h3>Window &amp; Door Decals</h3><p>Cut-vinyl hours and notices for storefront glass, removable without adhesive scarring.</p></div>
+      <div class="prow"><div class="n">06</div><h3>Sandwich Boards &amp; A-Frames</h3><p>Ballasted for open avenues, with quick-change chalk or magnetic inserts.</p></div>
+      <div class="prow"><div class="n">07</div><h3>Awning Graphics</h3><p>Screen-printed or digitally imaged skins, refreshed on your existing permitted frame.</p></div>
+      <div class="prow"><div class="n">08</div><h3>Heater &amp; Safety Signage</h3><p>Required clearance and fire-code postings, designed to sit quietly alongside your branding.</p></div>
+      <div class="prow"><div class="n">09</div><h3>String Light &amp; Canopy Branding</h3><p>Pennants, canopy valances, and lit signage that carry your identity after dark.</p></div>
     </div>
   </div>
 </section>
 
-<section id="winter">
-  <div class="winter">
-    <div class="copy">
-      <div class="stamp-tag">Built For LL158</div>
-      <h2>Don't dismantle your signage for winter. Rate it for winter.</h2>
-      <p>Before the year-round law, most roadside signage was designed to last one season and get boxed up. We build the opposite: substrates and finishes chosen for salt spray, plow slush, freeze-thaw cycling, and low winter light — so the same signage that draws lunch crowds in July still reads clearly under a streetlight in February.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="n">12+</div><div class="l">months rated outdoors</div></div>
-        <div class="stat"><div class="n">-10°F</div><div class="l">cold-cracking threshold</div></div>
-        <div class="stat"><div class="n">2–3wk</div><div class="l">design to install</div></div>
+<section id="gallery" style="padding-top:0; padding-bottom:0;">
+  <div class="wrap" style="max-width:none; padding:0;">
+    <div class="wrap" style="padding-bottom:70px;">
+      <div class="section-head">
+        <span class="label">Around The City</span>
+        <h2>The streetscape we design for.</h2>
       </div>
     </div>
-    <div class="photo" role="img" aria-label="Snowy New York City street with buildings and parked cars">
-      <img src="https://images.unsplash.com/photo-1515021593269-80bab6254eae?w=1200&q=80&auto=format&fit=crop" alt="Snow-covered New York City street" style="width:100%;height:100%;object-fit:cover;">
+    <div class="gallery-grid">
+      <div class="col">
+        <div class="gpiece" style="height:56vh;">
+          <img class="ph" src="https://picsum.photos/seed/roadstead-g1/1400/1200?grayscale" alt="Placeholder — roadway dining structure">
+        </div>
+        <div class="gpiece" style="height:44vh;">
+          <img class="ph" src="https://picsum.photos/seed/roadstead-g2/1400/1000?grayscale" alt="Placeholder — storefront signage detail">
+        </div>
+      </div>
+      <div class="col">
+        <div class="gpiece" style="height:48vh;">
+          <img class="ph" src="https://picsum.photos/seed/roadstead-g3/1000/1200?grayscale" alt="Placeholder — café awning detail">
+        </div>
+        <div class="gpiece" style="height:52vh;">
+          <img class="ph" src="https://picsum.photos/seed/roadstead-g4/1000/1300?grayscale" alt="Placeholder — winter storefront">
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="padding-top:24px; padding-bottom:100px;">
+      <span class="label">Roadway dining, branded panel install — storefront café, awning detail — winter storefront, signage standing</span>
+    </div>
+  </div>
+</section>
+
+<section id="winter" class="winter" style="padding:0;">
+  <img class="ph" src="https://picsum.photos/seed/roadstead-winter/2200/1500?grayscale" alt="Placeholder — winter streetscape">
+  <div class="wrap winter-inner">
+    <span class="label">Built For Local Law 158</span>
+    <h2>Signage rated for winter, not dismantled for it.</h2>
+    <p>Before the year-round law, roadside signage was designed to last one season. We build the opposite — substrates and finishes chosen for salt spray, freeze-thaw cycling, and low winter light, so the same signage that draws a summer crowd still reads clearly under a streetlight in February.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="n">12+</div><div class="l label">Months Rated Outdoors</div></div>
+      <div class="stat"><div class="n">-10°F</div><div class="l label">Cold-Cracking Threshold</div></div>
+      <div class="stat"><div class="n">2–3 wk</div><div class="l label">Design To Install</div></div>
     </div>
   </div>
 </section>
@@ -441,34 +306,32 @@
 <section id="process">
   <div class="wrap">
     <div class="section-head">
-      <div class="stamp-tag" style="background:var(--cobalt); color:var(--paper);">How We Work</div>
+      <span class="label">How We Work</span>
       <h2>From sidewalk survey to finished install.</h2>
     </div>
-    <div class="process-line process">
-      <ol>
-        <li><div class="dot">01</div><h3>Site Survey</h3><p>We measure your shed, parklet, or storefront and check DOT and DOB signage limits before designing anything.</p></li>
-        <li><div class="dot">02</div><h3>Brand & Layout</h3><p>Menu boards, panels, and directionals are laid out together, so the full set reads as one identity from the curb.</p></li>
-        <li><div class="dot">03</div><h3>Fabrication</h3><p>Materials are chosen for the block you're on — wind exposure, salt spray, and sun angle all factor into the spec.</p></li>
-        <li><div class="dot">04</div><h3>Install & Check</h3><p>We install on your structure and return before the first freeze to confirm mounts, seals, and lighting hold.</p></li>
-      </ol>
+    <div class="process">
+      <div class="prow2"><div class="n">01</div><h3>Site Survey</h3><p>We measure your shed, parklet, or storefront, and confirm DOT and DOB limits before design begins.</p></div>
+      <div class="prow2"><div class="n">02</div><h3>Brand &amp; Layout</h3><p>Menu boards, panels, and directionals are laid out together, so the set reads as one identity.</p></div>
+      <div class="prow2"><div class="n">03</div><h3>Fabrication</h3><p>Materials are specified for the block you occupy — wind, salt spray, and sun angle all inform the build.</p></div>
+      <div class="prow2"><div class="n">04</div><h3>Install &amp; Check</h3><p>We install on your structure, and return before the first freeze to confirm mounts and seals hold.</p></div>
     </div>
   </div>
 </section>
 
 <section class="close-cta" id="contact">
-  <div class="wrap">
-    <h2>Keep your curb presence past Labor Day.</h2>
-    <div class="side">
-      <p>Tell us your address and structure type — we'll come out, measure, and return a signage plan built for the block you're on.</p>
-      <a href="mailto:hello@roadsteadsignage.nyc" class="btn primary">Request a Site Visit</a>
-    </div>
+  <img class="ph" src="https://picsum.photos/seed/roadstead-cta/2200/1500?grayscale" alt="Placeholder — closing image">
+  <div class="inner">
+    <span class="label">Enquiries</span>
+    <h2>Keep your presence past Labor Day.</h2>
+    <p>Tell us your address and structure type. We will visit, measure, and return with a signage plan built for the block you occupy.</p>
+    <a href="mailto:hello@roadsteadsignage.nyc" class="btn primary">Request A Site Visit</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Roadstead — Outdoor Signage Fabricators, NYC</span>
-    <span>Serving all five boroughs</span>
+    <span class="label">Roadstead — Outdoor Signage, New York City</span>
+    <span class="label">Manhattan · Brooklyn · Queens · The Bronx · Staten Island</span>
   </div>
 </footer>
 
