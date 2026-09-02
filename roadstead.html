@@ -3,320 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roadstead — Outdoor Signage, New York City</title>
+<title>Roadstead — Outdoor Signage for NYC Roadside Cafés</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black:#14120f;
-    --black-2:#1c1a16;
-    --ivory:#f3efe6;
-    --ivory-dim:#c9c2b3;
-    --stone:#8f887a;
-    --line:rgba(243,239,230,0.16);
-    --wine:#5c2027;
-    --wine-bright:#7a2c34;
+    --blue:#003a70;
+    --blue-2:#0b5ea8;
+    --blue-link:#0b5ea8;
+    --amber:#ffcc33;
+    --ink:#1a1a1a;
+    --grey:#5a5f66;
+    --line:#d7dbe0;
+    --bg:#ffffff;
+    --panel:#f2f5f8;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    background:var(--black);
-    color:var(--ivory);
-    font-family:'Jost', sans-serif;
-    font-weight:300;
-    line-height:1.65;
-    font-size:17px;
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Public Sans', Arial, sans-serif;
+    line-height:1.55; font-size:16px;
   }
-  h1,h2,h3{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:400;
-    margin:0;
-    line-height:1.05;
-    letter-spacing:0.005em;
-  }
+  h1,h2,h3{margin:0; font-weight:700; color:var(--blue);}
+  a{color:var(--blue-link); text-decoration:underline;}
+  a.nolink{text-decoration:none;}
   img{max-width:100%; display:block;}
-  .ph{filter:grayscale(0) contrast(1.08) brightness(0.82); object-fit:cover;}
-  .wrap{max-width:1240px; margin:0 auto; padding:0 40px;}
-  a{color:inherit;}
-  .label{
-    font-family:'Jost',sans-serif; font-size:0.74rem; font-weight:500;
-    letter-spacing:0.18em; text-transform:uppercase; color:var(--stone);
-  }
+  .ph{filter:saturate(0.9);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  hr.rule{border:none; border-top:1px solid var(--line); margin:0;}
+  ul{margin:0; padding-left:20px;}
+  li{margin-bottom:6px;}
 
-  /* ---------- topbar ---------- */
-  .topbar{
-    position:sticky; top:0; z-index:50;
-    background:rgba(20,18,15,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
+  /* ---------- utility bar ---------- */
+  .utility{background:var(--blue); color:#fff; font-size:0.82rem;}
+  .utility .wrap{display:flex; justify-content:flex-end; gap:22px; padding:7px 24px;}
+  .utility a{color:#fff; text-decoration:none;}
+  .utility a:hover{text-decoration:underline;}
+
+  /* ---------- header ---------- */
+  header.site{border-bottom:4px solid var(--blue); background:#fff;}
+  header.site .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; gap:20px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand .mark{
+    width:44px; height:44px; background:var(--blue); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1.3rem; flex:none;
   }
-  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:78px;}
-  .brand{
-    text-decoration:none; color:var(--ivory);
-    font-family:'Cormorant Garamond',serif; font-size:1.5rem; letter-spacing:0.06em;
+  .brand .word{font-weight:800; font-size:1.35rem; color:var(--ink); letter-spacing:-0.01em;}
+  .brand .sub{font-size:0.72rem; color:var(--grey); display:block; margin-top:1px; font-weight:500;}
+  nav.main{display:flex; gap:26px; align-items:center;}
+  nav.main a{color:var(--ink); text-decoration:none; font-weight:600; font-size:0.92rem;}
+  nav.main a:hover{color:var(--blue-2); text-decoration:underline;}
+  .btn-primary{
+    background:var(--blue); color:#fff; text-decoration:none;
+    padding:11px 22px; font-weight:700; font-size:0.9rem; border:2px solid var(--blue);
   }
-  nav{display:flex; gap:38px;}
-  nav a{
-    font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
-    text-decoration:none; color:var(--ivory-dim); font-weight:400;
+  .btn-primary:hover{background:var(--blue-2); border-color:var(--blue-2);}
+  @media (max-width:900px){ nav.main{display:none;} }
+
+  /* ---------- alert banner ---------- */
+  .alert{background:var(--amber); color:var(--ink); font-weight:700; font-size:0.98rem;}
+  .alert .wrap{padding:12px 24px; display:flex; align-items:center; gap:10px;}
+  .alert .tag{
+    background:var(--ink); color:var(--amber); font-size:0.72rem; font-weight:800;
+    padding:3px 8px; letter-spacing:0.03em; flex:none;
   }
-  nav a:hover{color:var(--ivory);}
-  .topbar .cta{
-    border:1px solid var(--ivory-dim); color:var(--ivory);
-    padding:11px 22px;
-    font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase;
-    text-decoration:none;
-  }
-  .topbar .cta:hover{background:var(--ivory); color:var(--black);}
-  @media (max-width:860px){ nav{display:none;} }
 
   /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    min-height:96vh;
-    display:flex;
-    align-items:flex-end;
+  .hero{position:relative; background:var(--ink);}
+  .hero img{width:100%; height:56vh; min-height:340px; object-fit:cover; display:block; opacity:0.55;}
+  .hero-text{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+    color:#fff;
   }
-  .hero img{
-    position:absolute; inset:0; width:100%; height:100%; z-index:0;
-  }
-  .hero::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,18,15,0.15) 0%, rgba(20,18,15,0.55) 55%, rgba(20,18,15,0.95) 100%);
-    z-index:1;
-  }
-  .hero-inner{position:relative; z-index:2; padding:0 0 90px; width:100%;}
-  .hero .label{color:var(--ivory-dim); margin-bottom:20px; display:block;}
-  .hero h1{
-    font-size:clamp(3rem, 7vw, 6.2rem);
-    max-width:16ch;
-    font-weight:400;
-  }
-  .hero .sub{
-    margin-top:28px; font-size:1.12rem; max-width:46ch; color:var(--ivory-dim); font-weight:300;
-  }
-  .hero-actions{margin-top:38px; display:flex; gap:18px; flex-wrap:wrap;}
-  .btn{
-    display:inline-block; padding:15px 28px;
-    font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase;
-    text-decoration:none; border:1px solid var(--ivory-dim);
-  }
-  .btn.primary{background:var(--ivory); color:var(--black); border-color:var(--ivory);}
-  .btn.primary:hover{background:transparent; color:var(--ivory);}
-  .btn.ghost{color:var(--ivory); border-color:rgba(243,239,230,0.4);}
-  .btn.ghost:hover{border-color:var(--ivory);}
+  .hero-text .wrap{max-width:760px;}
+  .hero-text h1{color:#fff; font-size:clamp(1.9rem,4.4vw,3rem); line-height:1.15;}
+  .hero-text p{margin-top:16px; font-size:1.08rem; color:#e7ebef; max-width:56ch;}
+  .hero-actions{margin-top:26px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-white{background:#fff; color:var(--blue); text-decoration:none; padding:12px 22px; font-weight:700; font-size:0.9rem;}
+  .btn-outline{border:2px solid #fff; color:#fff; text-decoration:none; padding:10px 20px; font-weight:700; font-size:0.9rem;}
 
-  /* ---------- section shared ---------- */
-  section{padding:130px 0;}
-  .section-head{max-width:680px; margin-bottom:70px;}
-  .section-head .label{margin-bottom:18px; display:block;}
-  .section-head h2{font-size:clamp(2.2rem, 4.2vw, 3.4rem); font-weight:400;}
-  .section-head p{margin-top:20px; font-size:1.08rem; color:var(--ivory-dim); max-width:58ch; font-weight:300;}
-  .rule{border:none; border-top:1px solid var(--line); margin:0;}
+  section{padding:56px 0;}
+  h2.section-title{font-size:1.7rem; margin-bottom:8px;}
+  p.section-desc{color:var(--grey); max-width:70ch; margin-top:0;}
 
-  /* ---------- law statement ---------- */
-  .law{padding:80px 0; border-bottom:1px solid var(--line);}
-  .law .wrap{display:grid; grid-template-columns:220px 1fr; gap:40px; align-items:start;}
-  .law .label{margin:0;}
-  .law p{margin:0; font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:400; line-height:1.4; max-width:34ch; color:var(--ivory);}
-  @media (max-width:760px){ .law .wrap{grid-template-columns:1fr;} }
+  /* ---------- whats new ---------- */
+  .whatsnew{display:grid; grid-template-columns:1fr 1.3fr; gap:40px; align-items:center;}
+  .whatsnew img{border:1px solid var(--line);}
+  .whatsnew ul{color:var(--ink); font-size:0.98rem;}
+  .whatsnew li{margin-bottom:12px;}
+  @media (max-width:800px){ .whatsnew{grid-template-columns:1fr;} }
 
-  /* ---------- full bleed break ---------- */
-  .break{position:relative; height:76vh; overflow:hidden;}
-  .break img{width:100%; height:100%; object-fit:cover;}
-  .break .caption{
-    position:absolute; left:40px; bottom:28px; z-index:2;
+  /* ---------- statement band ---------- */
+  .statement{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .statement h2{font-size:1.5rem;}
+  .statement p{max-width:74ch; color:var(--ink); margin-top:12px;}
+
+  /* ---------- steps ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:0;}
+  .step{padding:26px 22px; border-right:1px solid var(--line);}
+  .step:last-child{border-right:none;}
+  .step .num{
+    width:30px; height:30px; background:var(--blue); color:#fff; font-weight:800;
+    display:flex; align-items:center; justify-content:center; font-size:0.9rem; margin-bottom:14px;
   }
-  .break::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,18,15,0.75), transparent 40%);}
+  .step h3{font-size:1.02rem; color:var(--ink);}
+  .step p{margin:8px 0 0; font-size:0.88rem; color:var(--grey);}
+  .step a{font-size:0.85rem; font-weight:700;}
+  @media (max-width:820px){ .steps{grid-template-columns:1fr 1fr;} .step{border-bottom:1px solid var(--line);} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
 
-  /* ---------- product list (editorial) ---------- */
-  .plist{border-top:1px solid var(--line);}
-  .prow{
-    display:grid; grid-template-columns:90px 1fr 1.4fr;
-    gap:40px; align-items:start;
-    padding:44px 0;
-    border-bottom:1px solid var(--line);
-  }
-  .prow .n{font-family:'Cormorant Garamond',serif; font-size:2.1rem; color:var(--stone); font-weight:400;}
-  .prow h3{font-size:1.7rem; font-weight:400;}
-  .prow p{margin:0; color:var(--ivory-dim); font-size:0.98rem; font-weight:300; max-width:54ch;}
-  @media (max-width:760px){
-    .prow{grid-template-columns:56px 1fr; }
-    .prow p{grid-column:1 / 3;}
-  }
+  /* ---------- two-column diagram blocks ---------- */
+  .diagram-block{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:48px 0; border-top:1px solid var(--line);}
+  .diagram-block:nth-child(even) .art{order:2;}
+  .diagram-block .art{background:var(--panel); border:1px solid var(--line); padding:20px;}
+  .diagram-block h2{font-size:1.4rem;}
+  .diagram-block ul{margin-top:14px; color:var(--ink); font-size:0.96rem;}
+  .diagram-block .guide{margin-top:18px; font-weight:700;}
+  .diagram-block .sublinks{margin-top:14px; font-size:0.86rem;}
+  .diagram-block .sublinks li{margin-bottom:5px;}
+  @media (max-width:820px){ .diagram-block{grid-template-columns:1fr;} .diagram-block:nth-child(even) .art{order:0;} }
 
-  /* ---------- gallery: editorial asymmetric grid ---------- */
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:1.6fr 1fr;
-    gap:2px;
-  }
-  .gallery-grid .col{display:grid; gap:2px;}
-  .gpiece{position:relative; overflow:hidden;}
-  .gpiece img{width:100%; height:100%; object-fit:cover; display:block;}
-  .gcap{margin-top:14px;}
-  .gcap .label{margin:0;}
-  @media (max-width:820px){ .gallery-grid{grid-template-columns:1fr;} }
+  /* ---------- gallery strip ---------- */
+  .gallery-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line);}
+  .gallery-strip img{height:230px; width:100%; object-fit:cover;}
+  @media (max-width:820px){ .gallery-strip{grid-template-columns:1fr 1fr;} }
 
-  /* ---------- winter ---------- */
-  .winter{position:relative; min-height:92vh; display:flex; align-items:flex-end;}
-  .winter img{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
-  .winter::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,18,15,0.92) 0%, rgba(20,18,15,0.55) 46%, rgba(20,18,15,0.15) 78%); z-index:1;}
-  .winter-inner{position:relative; z-index:2; padding-bottom:90px; max-width:620px;}
-  .winter-inner h2{font-size:clamp(2.2rem, 4vw, 3.2rem);}
-  .winter-inner p{margin-top:20px; color:var(--ivory-dim); font-size:1.05rem; max-width:50ch;}
-  .stat-row{display:flex; gap:56px; margin-top:44px; flex-wrap:wrap;}
-  .stat .n{font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:400;}
-  .stat .l{margin-top:6px;}
-  .stat{border-top:1px solid var(--line); padding-top:16px; min-width:120px;}
+  /* ---------- signup ---------- */
+  .signup{background:var(--blue); color:#fff;}
+  .signup .wrap{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
+  .signup h2{color:#fff; font-size:1.3rem;}
+  .signup form{display:flex; gap:10px; flex-wrap:wrap;}
+  .signup input{padding:11px 14px; border:none; font-size:0.92rem; min-width:200px;}
+  .signup button{background:var(--amber); color:var(--ink); border:none; padding:11px 20px; font-weight:800; font-size:0.9rem; cursor:pointer;}
 
-  /* ---------- process ---------- */
-  .process{border-top:1px solid var(--line);}
-  .prow2{
-    display:grid; grid-template-columns:90px 1fr; gap:40px;
-    padding:40px 0; border-bottom:1px solid var(--line); align-items:baseline;
-  }
-  .prow2 .n{font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:var(--stone);}
-  .prow2 h3{font-size:1.35rem; font-weight:400; display:inline; margin-right:18px;}
-  .prow2 p{display:inline; color:var(--ivory-dim); font-size:0.98rem; font-weight:300;}
-  @media (max-width:700px){ .prow2{grid-template-columns:1fr;} .prow2 h3{display:block; margin-bottom:8px;} }
-
-  /* ---------- close cta ---------- */
-  .close-cta{position:relative; min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center;}
-  .close-cta img{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
-  .close-cta::after{content:""; position:absolute; inset:0; background:rgba(20,18,15,0.72); z-index:1;}
-  .close-cta .inner{position:relative; z-index:2; max-width:640px; padding:0 40px;}
-  .close-cta h2{font-size:clamp(2.4rem, 5vw, 3.8rem);}
-  .close-cta p{margin-top:22px; color:var(--ivory-dim); font-size:1.08rem;}
-  .close-cta .btn{margin-top:36px;}
-
-  footer{padding:50px 0; border-top:1px solid var(--line);}
-  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;}
-  footer .label{margin:0;}
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); color:#c7cbd1; font-size:0.86rem;}
+  footer .wrap{padding:34px 24px 26px;}
+  footer .cols{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap;}
+  footer h4{color:#fff; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 10px;}
+  footer a{color:#c7cbd1; text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+  footer .legal{margin-top:24px; padding-top:18px; border-top:1px solid #3a3d42; font-size:0.78rem; color:#8b8f95;}
 </style>
 </head>
 <body>
 
-<div class="topbar">
+<div class="utility">
   <div class="wrap">
-    <a href="#" class="brand">Roadstead</a>
-    <nav>
+    <a href="#contact">For Restaurants</a>
+    <a href="#products">Search Products</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <span class="mark">R</span>
+      <span>
+        <span class="word">Roadstead</span>
+        <span class="sub">Outdoor Signage &mdash; New York City</span>
+      </span>
+    </a>
+    <nav class="main">
       <a href="#products">Signage</a>
       <a href="#winter">Winter-Ready</a>
-      <a href="#gallery">Work</a>
-      <a href="#process">Process</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#process">How It Works</a>
     </nav>
-    <a href="#contact" class="cta">Enquire</a>
+    <a href="#contact" class="btn-primary">Get a Quote</a>
   </div>
-</div>
+</header>
 
-<section class="hero">
-  <img class="ph" src="https://images.unsplash.com/photo-1549947690-3c2a8bbc4096" alt="Placeholder — roadside café hero image">
-  <div class="wrap hero-inner">
-    <span class="label">Local Law 158 — Roadway Dining, Now Year-Round</span>
-    <h1>ROADSIDE CAFE' SIGNAGE.</h1>
-    <p class="sub">We design and fabricate outdoor menu boards, branded panels, and directional signage for New York's finest roadside dining — built to hold their composure through a Manhattan winter.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn primary">Request A Quote</a>
-      <a href="#products" class="btn ghost">View the Collection</a>
-    </div>
-  </div>
-</section>
-
-<div class="law">
+<div class="alert">
   <div class="wrap">
-    <span class="label">The Legislation</span>
-    <p>With roadway dining now permitted year-round, the structures that once came down each November remain — and their signage must be considered accordingly, not as a seasonal fixture but as a permanent part of the streetscape.</p>
+    <span class="tag">Update</span>
+    <span>New York City Council allows year-round roadway dining &mdash; signage now needs to hold up all season.</span>
   </div>
 </div>
 
-<div class="break">
-  <img class="ph" src="https://images.unsplash.com/photo-1724123475134-f7f84f83bb67" alt="Placeholder — full-width streetscape image">
+<section class="hero" style="padding:0;">
+  <img class="ph" src="https://picsum.photos/seed/roadstead-civic-hero/2000/1100?grayscale" alt="Placeholder — roadside café streetscape">
+  <div class="hero-text">
+    <div class="wrap">
+      <h1>Outdoor Signage for New York's Roadside Cafés</h1>
+      <p>Menu boards, branded panels, and directional signage — designed and fabricated to stay up through every season, not just the warm ones.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-white">Request a Quote</a>
+        <a href="#products" class="btn-outline">View Signage Options</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap whatsnew">
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-news/700/560?grayscale" alt="Placeholder — café signage in use">
+    <div>
+      <h2 class="section-title">What's New</h2>
+      <ul>
+        <li>New York City Council allows year-round roadway dining — signage now has to be rated for winter, not stored for it.</li>
+        <li>We've added winter-rated substrates to our standard menu board and panel line.</li>
+        <li><a href="#gallery">Browse recent installs</a> across roadway sheds, sidewalk cafés, and storefronts.</li>
+        <li><a href="#process">Review the process</a> — from site survey to finished install.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="statement">
+  <div class="wrap" style="padding:44px 24px;">
+    <h2>Year-Round Roadway Dining Means Year-Round Signage</h2>
+    <p>Before the law changed, most roadside signage was built to last one season and come down with the shed. Now that roadway cafés can stay up, their menu boards, panels, and directionals need to be specified the same way — for salt spray, freeze-thaw cycling, and low winter light, not just a summer patio.</p>
+  </div>
 </div>
 
-<section id="products">
+<section id="process">
   <div class="wrap">
-    <div class="section-head">
-      <span class="label">The Collection</span>
-      <h2>Everything a roadside café requires to be found, read, and remembered.</h2>
-      <p>Each piece is fabricated to the proportions of your dining structure and the character of your brand.</p>
-    </div>
-    <div class="plist">
-      <div class="prow"><div class="n">01</div><h3>Outdoor Menu Boards</h3><p>Weatherproofed, backlit or matte-laminated boards, sized precisely to curbside sheds and parklets.</p></div>
-      <div class="prow"><div class="n">02</div><h3>Branded Panels</h3><p>Structural fascia and railing panels, your identity considered as part of the enclosure itself.</p></div>
-      <div class="prow"><div class="n">03</div><h3>Directional Signage</h3><p>Sidewalk-to-seating wayfinding — host stand markers and quiet arrows for narrow storefronts.</p></div>
-      <div class="prow"><div class="n">04</div><h3>Winter-Rated Panels</h3><p>Freeze-cycle-tested aluminum and HDPE substrates, resistant to salt, warping, and fade.</p></div>
-      <div class="prow"><div class="n">05</div><h3>Window &amp; Door Decals</h3><p>Cut-vinyl hours and notices for storefront glass, removable without adhesive scarring.</p></div>
-      <div class="prow"><div class="n">06</div><h3>Sandwich Boards &amp; A-Frames</h3><p>Ballasted for open avenues, with quick-change chalk or magnetic inserts.</p></div>
-      <div class="prow"><div class="n">07</div><h3>Awning Graphics</h3><p>Screen-printed or digitally imaged skins, refreshed on your existing permitted frame.</p></div>
-      <div class="prow"><div class="n">08</div><h3>Heater &amp; Safety Signage</h3><p>Required clearance and fire-code postings, designed to sit quietly alongside your branding.</p></div>
-      <div class="prow"><div class="n">09</div><h3>String Light &amp; Canopy Branding</h3><p>Pennants, canopy valances, and lit signage that carry your identity after dark.</p></div>
+    <h2 class="section-title">Steps to Get Signage Installed</h2>
+    <p class="section-desc">From first measurement to a finished install, here's how a project with us runs.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Site Survey</h3>
+        <p>We measure your shed, parklet, or storefront and check signage limits before designing anything.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Brand &amp; Layout</h3>
+        <p>Menu boards, panels, and directionals are laid out together as one identity.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Fabrication</h3>
+        <p>Materials are specified for your block — wind exposure, salt spray, and sun angle included.</p>
+        <a href="#products">See materials &rarr;</a>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Install &amp; Check</h3>
+        <p>We install on-site and return before the first freeze to confirm mounts and seals hold.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="gallery" style="padding-top:0; padding-bottom:0;">
-  <div class="wrap" style="max-width:none; padding:0;">
-    <div class="wrap" style="padding-bottom:70px;">
-      <div class="section-head">
-        <span class="label">Around The City</span>
-        <h2>The streetscape we design for.</h2>
+<section id="products" style="padding-top:0;">
+  <div class="wrap">
+
+    <div class="diagram-block">
+      <div>
+        <h2>Roadway Café Signage</h2>
+        <ul>
+          <li>Menu boards and branded panels sized for modular roadway shed frames</li>
+          <li>Freeze-rated substrates built for a structure that no longer comes down each winter</li>
+          <li>Lightweight, quick to remount if your shed layout changes season to season</li>
+        </ul>
+        <div class="guide"><a href="#gallery">See Roadway Signage Examples</a></div>
+        <ul class="sublinks">
+          <li><a href="#">Menu Boards: Sizing &amp; Materials</a></li>
+          <li><a href="#">Branded Panels: Layout Guide</a></li>
+          <li><a href="#">Winter-Rated Substrates</a></li>
+        </ul>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="230" width="460" height="14" fill="#5a5f66"/>
+          <rect x="40" y="120" width="400" height="110" fill="none" stroke="#003a70" stroke-width="3"/>
+          <rect x="60" y="60" width="360" height="60" fill="none" stroke="#0b5ea8" stroke-width="3"/>
+          <rect x="80" y="150" width="90" height="70" fill="none" stroke="#003a70" stroke-width="2"/>
+          <rect x="195" y="150" width="90" height="70" fill="none" stroke="#003a70" stroke-width="2"/>
+          <rect x="310" y="150" width="90" height="70" fill="none" stroke="#003a70" stroke-width="2"/>
+          <text x="240" y="94" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" fill="#003a70">BRANDED PANEL</text>
+          <text x="240" y="188" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#0b5ea8">MENU BOARDS</text>
+        </svg>
       </div>
     </div>
-    <div class="gallery-grid">
-      <div class="col">
-        <div class="gpiece" style="height:56vh;">
-          <img class="ph" src="https://images.unsplash.com/photo-1691814471394-23e2f09f6835" alt="Placeholder — roadway dining structure">
-        </div>
-        <div class="gpiece" style="height:44vh;">
-          <img class="ph" src="https://images.unsplash.com/photo-1652794878135-d33b9779970c" alt="Placeholder — storefront signage detail">
-        </div>
+
+    <div class="diagram-block">
+      <div class="art">
+        <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="250" width="460" height="12" fill="#5a5f66"/>
+          <rect x="30" y="40" width="30" height="210" fill="none" stroke="#003a70" stroke-width="3"/>
+          <rect x="420" y="40" width="30" height="210" fill="none" stroke="#003a70" stroke-width="3"/>
+          <path d="M60 70 L420 70 L400 40 L80 40 Z" fill="none" stroke="#0b5ea8" stroke-width="3"/>
+          <rect x="110" y="140" width="60" height="30" fill="none" stroke="#003a70" stroke-width="2"/>
+          <rect x="210" y="140" width="60" height="30" fill="none" stroke="#003a70" stroke-width="2"/>
+          <rect x="310" y="140" width="60" height="30" fill="none" stroke="#003a70" stroke-width="2"/>
+          <text x="240" y="30" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" fill="#003a70">AWNING GRAPHIC</text>
+          <text x="240" y="200" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#0b5ea8">WINDOW DECALS</text>
+        </svg>
       </div>
-      <div class="col">
-        <div class="gpiece" style="height:48vh;">
-          <img class="ph" src="https://picsum.photos/seed/roadstead-g3/1000/1200?grayscale" alt="Placeholder — café awning detail">
-        </div>
-        <div class="gpiece" style="height:52vh;">
-          <img class="ph" src="https://picsum.photos/seed/roadstead-g4/1000/1300?grayscale" alt="Placeholder — winter storefront">
-        </div>
+      <div>
+        <h2>Sidewalk Café Signage</h2>
+        <ul>
+          <li>Awning graphics and window decals sized to storefront frontage</li>
+          <li>Sandwich boards and directional flags for narrow sidewalks</li>
+          <li>Designed to sit alongside required heater and safety postings</li>
+        </ul>
+        <div class="guide"><a href="#gallery">See Sidewalk Signage Examples</a></div>
+        <ul class="sublinks">
+          <li><a href="#">Awning Graphics: Refresh Your Existing Frame</a></li>
+          <li><a href="#">Window &amp; Door Decals</a></li>
+          <li><a href="#">Sandwich Boards &amp; A-Frames</a></li>
+        </ul>
       </div>
     </div>
-    <div class="wrap" style="padding-top:24px; padding-bottom:100px;">
-      <span class="label">Roadway dining, branded panel install — storefront café, awning detail — winter storefront, signage standing</span>
-    </div>
+
   </div>
 </section>
 
-<section id="winter" class="winter" style="padding:0;">
-  <img class="ph" src="https://picsum.photos/seed/roadstead-winter/2200/1500?grayscale" alt="Placeholder — winter streetscape">
-  <div class="wrap winter-inner">
-    <span class="label">Built For Local Law 158</span>
-    <h2>Signage rated for winter, not dismantled for it.</h2>
-    <p>Before the year-round law, roadside signage was designed to last one season. We build the opposite — substrates and finishes chosen for salt spray, freeze-thaw cycling, and low winter light, so the same signage that draws a summer crowd still reads clearly under a streetlight in February.</p>
-    <div class="stat-row">
-      <div class="stat"><div class="n">12+</div><div class="l label">Months Rated Outdoors</div></div>
-      <div class="stat"><div class="n">-10°F</div><div class="l label">Cold-Cracking Threshold</div></div>
-      <div class="stat"><div class="n">2–3 wk</div><div class="l label">Design To Install</div></div>
-    </div>
+<section id="gallery" style="padding-top:0;">
+  <div class="wrap" style="padding-bottom:24px;">
+    <h2 class="section-title">Recent Installs</h2>
+    <p class="section-desc">A look at recent signage projects across roadway sheds, sidewalk cafés, and storefronts.</p>
+  </div>
+  <div class="gallery-strip">
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-g1/500/460?grayscale" alt="Placeholder — roadway shed signage">
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-g2/500/460?grayscale" alt="Placeholder — storefront signage">
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-g3/500/460?grayscale" alt="Placeholder — awning detail">
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-g4/500/460?grayscale" alt="Placeholder — winter storefront signage">
   </div>
 </section>
 
-<section class="close-cta" id="contact">
-  <img class="ph" src="https://picsum.photos/seed/roadstead-cta/2200/1500?grayscale" alt="Placeholder — closing image">
-  <div class="inner">
-    <span class="label">Enquiries</span>
-    <h2>Keep your presence past Labor Day.</h2>
-    <p>Tell us your address and structure type. We will visit, measure, and return with a signage plan built for the block you occupy.</p>
-    <a href="mailto:hello@roadsteadsignage.nyc" class="btn primary">Request A Site Visit</a>
+<section id="winter" style="padding-top:56px;">
+  <div class="wrap whatsnew">
+    <div>
+      <h2 class="section-title">Winter-Rated Signage</h2>
+      <p class="section-desc" style="margin-bottom:16px;">Signage specified to stay outdoors year-round now that roadway sheds no longer come down for winter.</p>
+      <ul>
+        <li>Rated for 12+ months outdoors, no seasonal teardown</li>
+        <li>Substrates tested to a -10&deg;F cold-cracking threshold</li>
+        <li>Typical design-to-install turnaround of 2&ndash;3 weeks</li>
+      </ul>
+    </div>
+    <img class="ph" src="https://picsum.photos/seed/roadstead-civic-winter/700/540?grayscale" alt="Placeholder — winter streetscape">
   </div>
 </section>
+
+<div class="signup">
+  <div class="wrap" style="padding:34px 24px;">
+    <h2>Get Signage Updates</h2>
+    <form onsubmit="return false;">
+      <input type="email" placeholder="Email address">
+      <input type="text" placeholder="Restaurant name">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
-    <span class="label">Roadstead — Outdoor Signage, New York City</span>
-    <span class="label">Manhattan · Brooklyn · Queens · The Bronx · Staten Island</span>
+    <div class="cols">
+      <div>
+        <h4>Roadstead</h4>
+        <p style="max-width:28ch; color:#c7cbd1;">Outdoor signage for roadside cafés across New York City.</p>
+      </div>
+      <div>
+        <h4>Signage</h4>
+        <a href="#products" style="display:block; margin-bottom:6px;">Roadway Café Signage</a>
+        <a href="#products" style="display:block; margin-bottom:6px;">Sidewalk Café Signage</a>
+        <a href="#winter" style="display:block;">Winter-Rated Materials</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#gallery" style="display:block; margin-bottom:6px;">Our Work</a>
+        <a href="#process" style="display:block; margin-bottom:6px;">How It Works</a>
+        <a href="#contact" id="contact" style="display:block;">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@roadsteadsignage.nyc" style="display:block;">hello@roadsteadsignage.nyc</a>
+        <span style="display:block; margin-top:6px;">Serving all five boroughs</span>
+      </div>
+    </div>
+    <div class="legal">&copy; Roadstead Signage. All rights reserved.</div>
   </div>
 </footer>
 
